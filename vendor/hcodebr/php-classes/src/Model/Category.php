@@ -33,11 +33,11 @@ class Category extends Model {
 
 	}
 
-	public static function get($idcategory)
+	public function get($idcategory)
 	{
-		$sql = new sql();
+		$sql = new Sql();
 
-		return $sql->select("SELECT * FROM tb_categories WHERE idcategory = :idcategory",[ 
+		$results =  $sql->select("SELECT * FROM tb_categories WHERE idcategory = :idcategory",[ 
 			':idcategory'=>$idcategory
 			]);
 
@@ -47,9 +47,9 @@ class Category extends Model {
 
 	public function delete()
 	{
-		$sql = new sql();
+		$sql = new Sql();
 
-		$sql->query("DELETE * FROM tb_categories WHERE idcategory = :idcategory", [ 
+		$sql->query("DELETE  FROM tb_categories WHERE idcategory = :idcategory", [ 
 			':idcategory'=>$this->getidcategory()
 			]);
 

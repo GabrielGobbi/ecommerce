@@ -272,11 +272,11 @@ $app->post("/admin/categories/:idcategory", function($idcategory){
 
     $category->get((int)$idcategory);
 
-    $user->setData($_POST);
+    $category->setData($_POST);
 
-    $user->save();
+    $category->save();
 
-    header("Location: /admin/users");
+    header("Location: /admin/categories");
     exit;
 
 });
