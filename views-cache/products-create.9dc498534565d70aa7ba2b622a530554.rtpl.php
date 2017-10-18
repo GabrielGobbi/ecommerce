@@ -16,8 +16,8 @@
 <section class="content">
 
   <div class="row">
-  	<div class="col-md-12">
-  		<div class="box box-success">
+    <div class="col-md-12">
+      <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Novo Produto</h3>
         </div>
@@ -26,8 +26,8 @@
         <form role="form" action="/admin/products/create" method="post">
           <div class="box-body">
             <div class="form-group">
-              <label for="desproduct">Nome da produto</label>
-              <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="Digite o nome do produto">
+              <label for="idartistas">Nome da produto</label>
+              <input type="text" class="form-control" id="idartistas" name="idartistas" placeholder="Digite o nome do produto">
             </div>
             <div class="form-group">
               <label for="vlprice">Preço</label>
@@ -46,12 +46,12 @@
               <input type="number" class="form-control" id="vllength" name="vllength" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
-              <label for="vlweight">Peso</label>
-              <input type="number" class="form-control" id="vlweight" name="vlweight" step="0.01" placeholder="0.00">
+              <label for="vlweight">Tecnica</label>
+              <input type="number" class="form-control" id="idcategory" name="idcategory" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
               <label for="desurl">URL</label>
-              <input type="url" class="form-control" id="desurl" name="desurl">
+              <input type="text" class="form-control" id="desurl" name="desurl">
             </div>
           </div>
           <!-- /.box-body -->
@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-  	</div>
+    </div>
   </div>
 
 </section>

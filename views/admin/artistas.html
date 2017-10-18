@@ -7,7 +7,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="/admin/categories">Categorias</a></li>
+    <li class="active"><a href="/admin/artistas">Categorias</a></li>
   </ol>
 </section>
 
@@ -19,7 +19,7 @@
   		<div class="box box-primary">
             
             <div class="box-header">
-              <a href="/admin/categories/create" class="btn btn-success">Cadastrar Tecnica</a>
+              <a href="/admin/artistas/create" class="btn btn-success">Cadastrar Artista</a>
             </div>
 
             <div class="box-body no-padding">
@@ -27,19 +27,19 @@
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
-                    <th>Nome da Tecnica</th>
+                    <th>Nome do Artista</th>
                     <th style="width: 240px">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$categories"}
+                  {loop="$artistas"}
                   <tr>
-                    <td>{$value.idcategory}</td>
-                    <td>{$value.descategory}</td>
+                    <td>{$value.idartistas}</td>
+                    <td>{$value.name_artistas}</td>
                     <td>
-                      <a href="/admin/categories/{$value.idcategory}/products" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> Produtos</a>
-                      <a href="/admin/categories/{$value.idcategory}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/admin/categories/{$value.idcategory}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="/admin/artistas/{$value.idartistas}/products" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> Produtos</a>
+                      <a href="/admin/artistas/{$value.idartistas}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <a href="/admin/artistas/{$value.idartistas}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>
                   </tr>
                   {/loop}

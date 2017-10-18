@@ -1,4 +1,4 @@
-<?php 
+<?php  /*
 
 namespace Hcode\Model;
 
@@ -14,6 +14,43 @@ class Product extends Model {
 		$sql = new sql();
 
 		return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
+SELECT * from tb_products P INNER JOIN tb_artistas A on P.idartistas = A.idartistas*/
+
+
+namespace Hcode\Model;
+
+use \Hcode\DB\Sql;
+use \Hcode\Model;
+use \Hcode\Mailer;
+
+class Product extends Model {
+
+	public static function listAll()
+	{
+
+		$sql = new Sql();
+
+		return $sql->select("SELECT P.*, name_artistas , descategory from tb_products P INNER JOIN tb_artistas A on P.idartistas = A.idartistas INNER JOIN tb_categories C on P.idcategory = C.idcategory");
+
+
+
+	}
+
+
+
+	public static function checkList($list)
+	{
+
+		foreach ($list as &$row) {
+			
+			$p = new Product();
+			$p->setData($row);
+			$row = $p->getValues();
+
+
+		}
+
+		return $list;
 
 	}
 
@@ -22,7 +59,7 @@ class Product extends Model {
 
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :vlwidth, :vlheight, :vllength, :vlweight, :desurl)", array(
+		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :vlwidth, :vlheight, :vllength, :vlweight, :desurl, :idcategory, :idartistas)", array(
 			":idproduct"=>$this->getidproduct(),
 			":desproduct"=>$this->getdesproduct(),
 			":vlprice"=>$this->getvlprice(),
@@ -30,12 +67,15 @@ class Product extends Model {
 			":vlheight"=>$this->getvlheight(),
 			":vllength"=>$this->getvllength(),
 			":vlweight"=>$this->getvlweight(),
-			":desurl"=>$this->getdesurl()
+			":desurl"=>$this->getdesurl(),
+			":idartistas"=>$this->getidartistas(),
+			":idcategory"=>$this->getidcategory()
 		));
 
 		$this->setData($results[0]);
 
 	}
+
 	public function get($idproduct)
 	{
 
@@ -96,42 +136,35 @@ class Product extends Model {
 	}
 
 	public function setPhoto($file)
-	{
-
-		$extension = explode('.', $file['name']);
-		$extension = end($extension);
-
-		switch ($extension) {
-
-			case "jpg":
-			case "jpeg":
-			$image = imagecreatefromjpeg($file["tmp_name"]);
-			break;
-
-			case "gif":
-			$image = imagecreatefromgif($file["tmp_name"]);
-			break;
-
-			case "png":
-			$image = imagecreatefrompng($file["tmp_name"]);
-			break;
-
-		}
-
-		$dist = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
-			"res" . DIRECTORY_SEPARATOR . 
-			"site" . DIRECTORY_SEPARATOR . 
-			"img" . DIRECTORY_SEPARATOR . 
-			"products" . DIRECTORY_SEPARATOR . 
-			$this->getidproduct() . ".jpg";
-
-		imagejpeg($image, $dist);
-
-		imagedestroy($image);
-
-		$this->checkPhoto();
-
-	}
+{ 
+ if(empty( $file['name'])){
+ $this->checkPhoto();
+ }else{
+ $extension = explode('.', $file['name']);
+ $extension = end($extension);
+ switch ($extension) {
+ case "jpg":
+ case "jpeg":
+ $image = imagecreatefromjpeg($file["tmp_name"]);
+ break;
+ case "gif":
+ $image = imagecreatefromgif($file["tmp_name"]);
+ break;
+ case "png":
+ $image = imagecreatefrompng($file["tmp_name"]);
+ break;
+ }
+ $dist = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+ "res" . DIRECTORY_SEPARATOR . 
+ "site" . DIRECTORY_SEPARATOR . 
+ "img" . DIRECTORY_SEPARATOR . 
+ "products" . DIRECTORY_SEPARATOR . 
+ $this->getidproduct() . ".jpg";
+ imagejpeg($image, $dist);
+ imagedestroy($image);
+ $this->checkPhoto();
+ }
+}
 
 	public function getFromURL($desurl)
 	{
@@ -146,7 +179,19 @@ class Product extends Model {
 
 	}
 
+	public function getCategories()
+	{
+
+		$sql = new Sql();
+
+		return $sql->select("
+			SELECT * FROM tb_categories a INNER JOIN tb_productscategories b ON a.idcategory = b.idcategory WHERE b.idproduct = :idproduct
+		", [
+
+			':idproduct'=>$this->getidproduct()
+		]);
+
+	}
 
 }
-
 ?>

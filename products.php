@@ -21,42 +21,47 @@ $app->get('/admin/products', function() {
 		]);
 });
 
-$app->get('/admin/products/create', function() {
-    
+$app->get("/admin/products/create", function(){
+
 	User::verifyLogin();
 
 	$page = new PageAdmin();
 
+	$products = Product::CheckArtista();
+
 	$page->setTpl("products-create");
+
 });
 
-$app->post('/admin/products/create', function() {
-    
+$app->post("/admin/products/create", function(){
+
 	User::verifyLogin();
 
-	$products = new Product();
+	$product = new Product();
 
-	$products->setData($_POST);
+	$product->setData($_POST);
 
-	$products->save();
+	$product->save();
 
 	header("Location: /admin/products");
 	exit;
+
 });
 
-$app->get('/admin/products/:idproduct', function($idproduct) {
-    
+$app->get("/admin/products/:idproduct", function($idproduct){
+
 	User::verifyLogin();
 
 	$product = new Product();
 
 	$product->get((int)$idproduct);
-
+	
 	$page = new PageAdmin();
 
-	$page->setTpl("products-update",[
-		"product"=>$product->getValues()
-		]);
+	$page->setTpl("products-update", [
+		'product'=>$product->getValues()
+	]);
+
 });
 
 $app->post("/admin/products/:idproduct", function($idproduct){
@@ -93,11 +98,4 @@ $app->get("/admin/products/:idproduct/delete", function($idproduct){
 
 });
 
-
-
-
-
-
-
-
-?>
+ ?>
