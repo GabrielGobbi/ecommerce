@@ -23,6 +23,12 @@
             </div>
 
             <div class="box-body no-padding">
+            <a href="/admin/products/create" class="btn btn-success " style="
+    position: relative;
+    left: 85%;
+    top: -29px;
+    height: 34px;
+"> VOLTAR </a>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -37,11 +43,15 @@
                     <td>{$value.idartistas}</td>
                     <td>{$value.name_artistas}</td>
                     <td>
+
                       <a href="/admin/artistas/{$value.idartistas}/products" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> Produtos</a>
                       <a href="/admin/artistas/{$value.idartistas}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/admin/artistas/{$value.idartistas}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                    
                     </td>
+
                   </tr>
+
                   {/loop}
                 </tbody>
               </table>

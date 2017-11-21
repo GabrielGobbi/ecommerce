@@ -4,6 +4,7 @@
 use \Hcode\Page;
 use \Hcode\Model\product;
 use \Hcode\Model\Category;
+use \Hcode\Model\Artistas;
 
 $app->get('/', function() {
     
@@ -12,6 +13,31 @@ $app->get('/', function() {
 	$page = new Page();
 
 	$page->setTpl("index", [
+		'products'=>Product::checklist($products)
+		]);
+	
+
+});
+
+$app->get('/acervo', function() {
+    
+	$products = Product::listAll();
+
+	$page = new Page();
+
+	$page->setTpl("acervo", [
+		'products'=>Product::checklist($products)
+		]);
+	
+});
+
+$app->get('/products/acervo', function() {
+    
+	$products = Product::listAll();
+
+	$page = new Page();
+
+	$page->setTpl("acervo", [
 		'products'=>Product::checklist($products)
 		]);
 	
@@ -47,7 +73,7 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 });
 
-$app->get("/products/:desurl", function($desurl){
+$app->get("/acervo/:desurl", function($desurl){
 
 	$product = new Product();
 
@@ -56,10 +82,39 @@ $app->get("/products/:desurl", function($desurl){
 	$page = new Page();
 
 	$page->setTpl("product-detail", [
-		'product'=>$product->getValues(),
-		'categories'=>$product->getCategories()
+		'product'=>$product->getValues()
+		
 	]);
 
 });
+
+$app->get("/artistas/:desurl", function($desurl){
+
+	$artistas = new Artistas();
+
+	$artistas->getFromURL($desurl);
+
+	$page = new Page();
+
+	$page->setTpl("artistas-detail", [
+		'artistas'=>$artistas->getValues()
+		
+	]);
+
+});
+
+$app->get('/artistas', function() {
+    
+	$artistas = Artistas::listAll();
+
+	$page = new Page();
+
+	$page->setTpl("artistas", [
+		'artistas'=>Artistas::checklist($artistas)
+		]);
+	
+
+});
+
 
 ?>

@@ -29,6 +29,14 @@
               <label for="name_artistas">Nome do Artista</label>
               <input type="text" class="form-control" id="name_artistas" name="name_artistas" placeholder="Digite o nome do Artista">
             </div>
+             <div class="form-group">
+              <label for="desurl">URL</label>
+              <input type="text" class="form-control" id="desurl" name="desurl">
+            </div>
+            <div class="form-group">
+              <label for="biografia">Biografia</label>
+              <input type="text" class="form-control" id="biografia" name="biografia">
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

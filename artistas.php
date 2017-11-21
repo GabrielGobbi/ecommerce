@@ -75,6 +75,8 @@ $app->get("/admin/artistas/:idartistas", function($idartistas){
 
 	$artistas->get((int)$idartistas);
 
+ 
+
 	$page = new PageAdmin();
   	
   	$page->setTpl("artistas-update", [
@@ -83,7 +85,7 @@ $app->get("/admin/artistas/:idartistas", function($idartistas){
   	]);
 });
 
-$app->post("/admin/artistas/:idartsitas", function($idartistas){
+$app->post("/admin/artistas/:idartistas", function($idartistas){
     
 	User::verifyLogin();
 
@@ -94,6 +96,10 @@ $app->post("/admin/artistas/:idartsitas", function($idartistas){
     $artistas->setData($_POST);
 
     $artistas->save();
+
+    $artistas->setPhoto($_FILES["file"]);
+    
+    
 
     header("Location: /admin/artistas");
     exit;

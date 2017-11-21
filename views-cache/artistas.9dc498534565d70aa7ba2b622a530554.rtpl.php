@@ -23,6 +23,12 @@
             </div>
 
             <div class="box-body no-padding">
+            <a href="/admin/products/create" class="btn btn-success " style="
+    position: relative;
+    left: 85%;
+    top: -29px;
+    height: 34px;
+"> VOLTAR </a>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -38,11 +44,15 @@
                     <td><?php echo htmlspecialchars( $value1["idartistas"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["name_artistas"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td>
+
                       <a href="/admin/artistas/<?php echo htmlspecialchars( $value1["idartistas"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/products" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> Produtos</a>
                       <a href="/admin/artistas/<?php echo htmlspecialchars( $value1["idartistas"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/admin/artistas/<?php echo htmlspecialchars( $value1["idartistas"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                    
                     </td>
+
                   </tr>
+
                   <?php } ?>
 
                 </tbody>

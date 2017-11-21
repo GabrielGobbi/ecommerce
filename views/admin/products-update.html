@@ -21,32 +21,42 @@
         <form role="form" action="/admin/products/{$product.idproduct}" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
-              <label for="idartistas">Nome do Artista</label>
-              <input type="text" class="form-control" id="idartistas" name="idartistas" placeholder="{Digite o nome do Obra}" value="{$product.idartistas}">
+              <label for="artista">Nome do artista</label>
+              <input type="text" class="form-control" id="artista" name="artista" placeholder="{Digite o nome do artista}" value="{$product.artista}">
             </div>
             <div class="form-group">
-              <label for="vlprice">Preço</label>
-              <input type="number" class="form-control" id="vlprice" name="vlprice" step="0.01" placeholder="0.00" value="{$product.vlprice}">
+              <label for="desproduct">Descrição</label>
+              <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="{Digite o nome do Obra}" value="{$product.desproduct}">
             </div>
             <div class="form-group">
-              <label for="vlwidth">Tamanho</label>
-              <input type="text" class="form-control" id="vlwidth" name="vlwidth" step="00x00" placeholder="00x00" value="{$product.vlwidth}">
+              <label for="comprado">Preço de Mercado</label>
+              <input type="number" class="form-control" id="comprado" name="comprado" step="0.01" placeholder="0.00" value="{$product.comprado}">
             </div>
             <div class="form-group">
-              <label for="vlheight">#</label>
-              <input type="number" class="form-control" id="vlheight" name="vlheight" step="0.01" placeholder="0.00" value="{$product.vlheight}">
+              <label for="mercado">Preço Comprado</label>
+              <input type="number" class="form-control" id="mercado" name="mercado" step="0.01" placeholder="0.00" value="{$product.mercado}">
             </div>
             <div class="form-group">
-              <label for="vllength">#</label>
-              <input type="number" class="form-control" id="vllength" name="vllength" step="0.01" placeholder="0.00" value="{$product.vllength}">
+              <label for="tamanho">Tamanho</label>
+              <input type="text" class="form-control" id="tamanho" name="tamanho" step="00x00" placeholder="00x00" value="{$product.tamanho}">
             </div>
             <div class="form-group">
-              <label for="vlweight">Tecnica</label>
-              <input type="number" class="form-control" id="idcategory" name="idcategory" step="0.01" placeholder="0.00" value="{$product.idcategory}">
+              <label for="observacao">Observação</label>
+              <input type="text" class="form-control" id="observacao" name="observacao" step="0.01" placeholder="0.00" value="{$product.observacao}">
             </div>
+            <div class="form-group">
+              <label for="situacao">Situação</label>
+              <input type="text" class="form-control" id="situacao" name="situacao" step="0.01" placeholder="0.00" value="{$product.situacao}">
+            </div>
+            <div class="form-group">
+              <label for="tecnica">tecnica</label>
+              <input type="text" class="form-control" id="tecnica" name="tecnica" step="0.01" placeholder="0.00" value="{$product.tecnica}">
+            </div>
+          
+            
             <div class="form-group">
               <label for="file">Foto</label>
-              <input type="file" class="form-control" id="file" name="file" value="{$product.vlweight}">
+              <input type="file" class="form-control" id="file" name="file" value="{$product.idproduct}">
               <div class="box box-widget">
                 <div class="box-body">
                   <img class="img-responsive" id="image-preview" src="{$product.desphoto}" alt="Photo">

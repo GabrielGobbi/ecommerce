@@ -183,9 +183,8 @@ desired effect
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="/res/admin/dist/img/boxed-bg.jpg" class="img-circle" alt="User Image">
-
                 <p>
-                  Gabriel Gobbi - Web Developer
+                  Carlos Rodrigues- Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -235,7 +234,7 @@ desired effect
           <img src="/res/admin/dist/img/boxed-bg.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Gabriel Gobbi</p>
+          <p>Carlos Rodrigues</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -259,7 +258,7 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li><a href="/admin/products"><i class="fa fa-users"></i> <span>Obras</span></a></li>
         <li><a href="/admin/artistas"><i class="fa fa-link"></i> <span>Artistas</span></a></li>
-        <li><a href="/admin/products"><i class="fa fa-link"></i> <span>Obras</span></a></li>
+        <li><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categorias</span></a></li>
         <li><a href="/admin/users"><i class="fa fa-shopping-cart"></i> <span>Usuarios</span></a></li>
 
         

@@ -22,8 +22,8 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/res/site/css/owl.carousel.css">
-    <link rel="stylesheet" href="/res/site/css/styles.css">
-    <link rel="stylesheet" href="/res/site/css/responsive.css">
+    <link rel="stylesheet" href="/res/site/css/st.css">
+    <link rel="stylesheet" href="/res/site/css/responsiv.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,49 +34,68 @@
   </head>
   <body>
    
+    </div> <!-- End brands area -->
+    
+
     <div class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="user-menu">
-                        
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="header-right">
-                        <ul class="list-unstyled list-inline">
-                           <!-- <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">moeda :</span><span class="value">BRL </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <!--<li><a href="#">BRL</a></li>
-                                    <li><a href="#">USD</a></li>
-                                </ul> -->
-                            </li>
-
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Linguagem :</span><span class="value">Português </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Português</a></li>
-                                    <li><a href="#">Inglês</a></li>
-                                    <li><a href="#">Espanhol</a></li>
-                                </ul>
-                            </li>
+                        <ul>
+                            <li><a href="/profile"><i class="fa fa-user"></i> Quem somos </a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> Contato </a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End header area -->
     
     <div class="site-branding-area">
+        <div class="mainmenu-area" style="
+    height: 115px;
+">
         <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div> 
+               
+
+<div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="#"><img src="/res/site/img/logos.png"></a></h1>
+                        <h1><a href="#"><img class="img3" src="/res/site/img/logosssss.png" ></a></h1>
                     </div>
                 </div>
+
+
+
+
+<div class="col-sm-6"><div style="
+    /* border: 1px solid #ddd; */
+    float: right;
+    font-size: 18px;
+    margin-top: 18px;
+    padding: 10px;
+    position: relative;
+">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" class="active">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li class="active" ><a href="/acervo">Acervo</a></li>
+                       
+                        <li class="active"><a href="#">Quem somos</a></li>
+                        <li class="active"><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+        </div>
                 
                 <!-- <div class="col-sm-6">
                     <div class="shopping-item">
@@ -85,4 +104,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End site branding area -->
+    </div> <!-- End site branding area --></div>  
+            </div>
+        </div>
+    </div>

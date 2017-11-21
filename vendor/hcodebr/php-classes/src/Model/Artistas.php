@@ -16,16 +16,31 @@ class Artistas extends Model {
 		return $sql->select("SELECT * FROM tb_artistas ORDER BY name_artistas");
 
 	}
+	public static function checkList($list)
+	{
+
+		foreach ($list as &$row) {
+			
+			$p = new Artistas();
+			$p->setData($row);
+			$row = $p->getValues();
+
+		}
+
+		return $list;
+
+	}
 
 	public function save()
 	{
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_artistas_save(:idartistas, :name_artistas)", array(
+		$results = $sql->select("CALL sp_artistas_save(:idartistas, :name_artistas, :adesurl, :biografia)", array(
 
 			":idartistas"=>$this->getidartistas(),
-			":name_artistas"=>$this->getname_artistas()
-			
+			":name_artistas"=>$this->getname_artistas(),
+			":adesurl"=>$this->getadesurl(),
+			":biografia"=>$this->getbiografia()
 			
 			));
 		
@@ -172,24 +187,90 @@ class Artistas extends Model {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 */
 
 
+public function checkPhoto()
+	{
 
+		if (file_exists(
+			$_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+			"res" . DIRECTORY_SEPARATOR . 
+			"site" . DIRECTORY_SEPARATOR . 
+			"img" . DIRECTORY_SEPARATOR . 
+			"artistas" . DIRECTORY_SEPARATOR . 
+			$this->getidartistas() . ".jpg"
+			)) {
 
+			$url = "/res/site/img/artistas/" . $this->getidartistas() . ".jpg";
 
+		} else {
+
+			$url = "/res/site/img/product.jpg";
+
+		}
+
+		return $this->setdesphoto($url);
+
+	}
+
+	public function getValues()
+	{
+
+		$this->checkPhoto();
+
+		$values = parent::getValues();
+
+		return $values;
+
+	}
+
+	public function setPhoto($file)
+{ 
+ if(empty( $file['name'])){
+ $this->checkPhoto();
+ }else{
+ $extension = explode('.', $file['name']);
+ $extension = end($extension);
+ switch ($extension) {
+ case "jpg":
+ case "jpeg":
+ case "JPG":
+ case "JPEG":
+ $image = imagecreatefromjpeg($file["tmp_name"]);
+ break;
+ case "gif":
+ $image = imagecreatefromgif($file["tmp_name"]);
+ break;
+ case "png":
+ case "PNG":
+ $image = imagecreatefrompng($file["tmp_name"]);
+ break;
+ }
+ $dist = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+ "res" . DIRECTORY_SEPARATOR . 
+ "site" . DIRECTORY_SEPARATOR . 
+ "img" . DIRECTORY_SEPARATOR . 
+ "artistas" . DIRECTORY_SEPARATOR . 
+ $this->getidartistas() . ".jpg";
+ imagejpeg($image, $dist);
+ imagedestroy($image);
+ $this->checkPhoto();
+ }
+}
+
+public function getFromURL($desurl)
+	{
+
+		$sql = new Sql();
+
+		$rows = $sql->select("SELECT *  FROM tb_artistas WHERE desurl = :desurl LIMIT 1 ", [
+			':desurl'=>$desurl
+		]);
+
+		$this->setData($rows[0]);
+
+	}
 
 
 

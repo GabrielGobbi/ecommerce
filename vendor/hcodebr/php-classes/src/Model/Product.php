@@ -30,13 +30,13 @@ class Product extends Model {
 
 		$sql = new Sql();
 
-		return $sql->select("SELECT P.*, name_artistas , descategory from tb_products P INNER JOIN tb_artistas A on P.idartistas = A.idartistas INNER JOIN tb_categories C on P.idcategory = C.idcategory");
+		return $sql->select("SELECT * from tb_products ORDER BY artista");
 
 
 
 	}
 
-
+	
 
 	public static function checkList($list)
 	{
@@ -59,17 +59,19 @@ class Product extends Model {
 
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :vlwidth, :vlheight, :vllength, :vlweight, :desurl, :idcategory, :idartistas)", array(
+		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :comprado, :mercado, :situacao, :tamanho, :observacao, :desurl, :artista, :tecnica)", array(
+			
 			":idproduct"=>$this->getidproduct(),
 			":desproduct"=>$this->getdesproduct(),
-			":vlprice"=>$this->getvlprice(),
-			":vlwidth"=>$this->getvlwidth(),
-			":vlheight"=>$this->getvlheight(),
-			":vllength"=>$this->getvllength(),
-			":vlweight"=>$this->getvlweight(),
+			":comprado"=>$this->getcomprado(),
+			":mercado"=>$this->getmercado(),
+			":situacao"=>$this->getsituacao(),
+			":tamanho"=>$this->gettamanho(),
+			":observacao"=>$this->getobservacao(),
 			":desurl"=>$this->getdesurl(),
-			":idartistas"=>$this->getidartistas(),
-			":idcategory"=>$this->getidcategory()
+			":artista"=>$this->getartista(),
+			":tecnica"=>$this->gettecnica()
+			
 		));
 
 		$this->setData($results[0]);
@@ -81,7 +83,7 @@ class Product extends Model {
 
 		$sql = new Sql();
 
-		$results = $sql->select("SELECT * FROM tb_products WHERE idproduct = :idproduct", [
+		$results = $sql->select("SELECT * FROM tb_products  WHERE idproduct = :idproduct", [
 			':idproduct'=>$idproduct
 		]);
 
@@ -145,12 +147,15 @@ class Product extends Model {
  switch ($extension) {
  case "jpg":
  case "jpeg":
+ case "JPG":
+ case "JPEG":
  $image = imagecreatefromjpeg($file["tmp_name"]);
  break;
  case "gif":
  $image = imagecreatefromgif($file["tmp_name"]);
  break;
  case "png":
+ case "PNG":
  $image = imagecreatefrompng($file["tmp_name"]);
  break;
  }
@@ -171,7 +176,7 @@ class Product extends Model {
 
 		$sql = new Sql();
 
-		$rows = $sql->select("SELECT * FROM tb_products WHERE desurl = :desurl LIMIT 1", [
+		$rows = $sql->select("SELECT *from tb_products  where desurl = :desurl  LIMIT 1", [
 			':desurl'=>$desurl
 		]);
 
@@ -190,6 +195,56 @@ class Product extends Model {
 
 			':idproduct'=>$this->getidproduct()
 		]);
+
+	}
+	public static function getPage($page = 1, $itemsPerPage = 5)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_products 
+			ORDER BY desproduct
+			LIMIT $start, $itemsPerPage;
+		");
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+
+	}
+
+	public static function getPageSearch($search, $page = 1, $itemsPerPage = 5)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_products
+			WHERE artista LIKE :search 
+			ORDER BY artista
+			LIMIT $start, $itemsPerPage;
+		", [
+			':search'=>'%'.$search.'%'
+		]);
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
 
 	}
 

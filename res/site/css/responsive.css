@@ -15,7 +15,11 @@ input[type="submit"], button[type="submit"] {
   width: 293px;
 }    
     
-    
+.img3{
+     top: -41px;
+    position: relative;
+    left: -3%;   
+ }   
 }
 
 /* Tablet Layout: 768px. */

@@ -26,28 +26,39 @@
         <form role="form" action="/admin/products/create" method="post">
           <div class="box-body">
             <div class="form-group">
-              <label for="idartistas">Nome da produto</label>
-              <input type="text" class="form-control" id="idartistas" name="idartistas" placeholder="Digite o nome do produto">
+              <label for="artista">Nome do Artista</label>
+              <input type="text" class="form-control" id="artista" name="artista" placeholder="Digite o id do Artista">
+            </div>
+            <!-- Button trigger modal -->
+<a href="/admin/artistas" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Artistas </a>
+
+            <div class="form-group">
+              <label for="desproduct">Descrição</label>
+              <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="Digite a descrição do produto">
             </div>
             <div class="form-group">
-              <label for="vlprice">Preço</label>
-              <input type="number" class="form-control" id="vlprice" name="vlprice" step="0.01" placeholder="0.00">
+              <label for="mercado">Preço de mercado</label>
+              <input type="number" class="form-control" id="mercado" name="mercado" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
-              <label for="vlwidth">Largura</label>
-              <input type="number" class="form-control" id="vlwidth" name="vlwidth" step="0.01" placeholder="0.00">
+              <label for="situacao">Situação</label>
+              <input type="text" class="form-control" id="situacao" name="situacao" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
-              <label for="vlheight">Altura</label>
-              <input type="number" class="form-control" id="vlheight" name="vlheight" step="0.01" placeholder="0.00">
+              <label for="observacao">Observação</label>
+              <input type="text" class="form-control" id="observacao" name="observacao" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
-              <label for="vllength">Comprimento</label>
-              <input type="number" class="form-control" id="vllength" name="vllength" step="0.01" placeholder="0.00">
+              <label for="comprado">Preço comprado</label>
+              <input type="number" class="form-control" id="comprado" name="comprado" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
-              <label for="vlweight">Tecnica</label>
-              <input type="number" class="form-control" id="idcategory" name="idcategory" step="0.01" placeholder="0.00">
+              <label for="tamanho">Tamanho</label>
+              <input type="text" class="form-control" id="tamanho" name="tamanho" step="0.01" placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label for="tecnica">Tecnica</label>
+              <input type="text" class="form-control" id="tecnica" name="tecnica" step="0.01" placeholder="0.00">
             </div>
             <div class="form-group">
               <label for="desurl">URL</label>
